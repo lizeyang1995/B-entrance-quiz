@@ -1,12 +1,11 @@
 package com.thoughtworks.capability.gtb.entrancequiz.api;
 
+import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import com.thoughtworks.capability.gtb.entrancequiz.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -29,5 +28,11 @@ public class StudentController {
     public ResponseEntity getRandomGroups() {
         List<List<Map<String, String>>> groups = studentService.getGroups();
         return ResponseEntity.ok(groups);
+    }
+
+    @PostMapping("student")
+    public ResponseEntity addStudent(@RequestBody Student student) {
+        List<Map<String, String>> allStudents = studentService.addStudent(student);
+        return ResponseEntity.ok(allStudents);
     }
 }

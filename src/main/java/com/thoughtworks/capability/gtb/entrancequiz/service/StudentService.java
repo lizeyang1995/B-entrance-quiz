@@ -1,18 +1,21 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
+import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class StudentService {
+    private final Students studentsPo;
     int GROUP_SIZE = 6;
     public StudentService() {
+        studentsPo = new Students();
     }
 
     public List<List<Map<String, String>>> getGroups() {
-        Students studentsPo = new Students();
         int studentSize = studentsPo.getStudents().size();
         List<Map<String, String>> students = studentsPo.getStudents();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
@@ -49,5 +52,14 @@ public class StudentService {
             }
         }
         return numbers;
+    }
+
+    public List<Map<String, String>> addStudent(Student student) {
+        Map<String, String> parseStudent = new HashMap<>();
+        int studentsSize = studentsPo.getStudents().size();
+        parseStudent.put("id", String.valueOf(studentsSize + 1));
+        parseStudent.put("name", student.getName());
+        studentsPo.addStudent(parseStudent);
+        return studentsPo.getStudents();
     }
 }

@@ -41,4 +41,8 @@ public class Students {
         this.students.add(new HashMap<String, String>(){{put("id", "14");put("name", "大乔");}});
         this.students.add(new HashMap<String, String>(){{put("id", "15");put("name", "蔡文姬");}});
     }
+
+    public void addStudent(Map<String, String> student) {
+        this.students.add(student);
+    }
 }
