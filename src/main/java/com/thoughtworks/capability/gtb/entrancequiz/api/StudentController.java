@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,7 +16,7 @@ public class StudentController {
     @GetMapping("/students")
     public ResponseEntity getAllstudents() {
         Students studentsPo = new Students();
-        Map<Integer, String> allStudents = studentsPo.getStudents();
+        List<Map<String, String>> allStudents = studentsPo.getStudents();
         return ResponseEntity.ok(allStudents);
     }
 }

@@ -1,11 +1,14 @@
 package com.thoughtworks.capability.gtb.entrancequiz.domain;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Students {
-    private Map<Integer, String> students;
+    private List<Map<String, String>> students = new ArrayList<>();
 
-    public Students(Map<Integer, String> students) {
+    public Students(List<Map<String, String>> students) {
         this.students = students;
     }
 
@@ -13,29 +16,29 @@ public class Students {
         initStudent();
     }
 
-    public Map<Integer, String> getStudents() {
+    public List<Map<String, String>> getStudents() {
         return students;
     }
 
-    public void setStudents(Map<Integer, String> students) {
+    public void setStudents(List<Map<String, String>> students) {
         this.students = students;
     }
 
     public void initStudent() {
-        this.students.put(1, "成吉思汗");
-        this.students.put(2, "鲁班七号");
-        this.students.put(3, "太乙真人");
-        this.students.put(4, "钟无艳");
-        this.students.put(5, "花木兰");
-        this.students.put(6, "雅典娜");
-        this.students.put(7, "芈月");
-        this.students.put(8, "白起");
-        this.students.put(9, "刘禅");
-        this.students.put(10, "庄周");
-        this.students.put(11, "马超");
-        this.students.put(12, "刘备");
-        this.students.put(13, "哪吒");
-        this.students.put(14, "大乔");
-        this.students.put(15, "蔡文姬");
+        this.students.add(new HashMap<String, String>(){{put("id", "1");put("name", "成吉思汗");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "2");put("name", "鲁班七号");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "3");put("name", "太乙真人");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "4");put("name", "钟无艳");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "5");put("name", "花木兰");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "6");put("name", "雅典娜");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "7");put("name", "芈月");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "8");put("name", "白起");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "9");put("name", "刘禅");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "10");put("name", "庄周");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "11");put("name", "马超");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "12");put("name", "刘备");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "13");put("name", "哪吒");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "14");put("name", "大乔");}});
+        this.students.add(new HashMap<String, String>(){{put("id", "15");put("name", "蔡文姬");}});
     }
 }
