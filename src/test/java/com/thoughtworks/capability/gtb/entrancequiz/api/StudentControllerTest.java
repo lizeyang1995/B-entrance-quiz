@@ -25,9 +25,7 @@ public class StudentControllerTest {
 
     @Test
     void should_get_all_students() throws Exception {
-        Students students = new Students();
         mockMvc.perform(get("/students"))
-                .andExpect(jsonPath("$[0].students.get(1)", is("成吉思汗")))
                 .andExpect(status().isOk());
     }
 }
