@@ -15,7 +15,7 @@ public class StudentService {
         Students studentsPo = new Students();
         int studentSize = studentsPo.getStudents().size();
         List<Map<String, String>> students = studentsPo.getStudents();
-        List<Integer> randomNumber = getRandomNumber(studentSize, 1, studentSize + 1);
+        List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
         return randomGrouping(studentSize, students, randomNumber);
     }
 

@@ -28,4 +28,10 @@ public class StudentControllerTest {
         mockMvc.perform(get("/students"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    void should_grouping_students() throws Exception {
+        mockMvc.perform(get("/groups"))
+                .andExpect(status().isOk());
+    }
 }
