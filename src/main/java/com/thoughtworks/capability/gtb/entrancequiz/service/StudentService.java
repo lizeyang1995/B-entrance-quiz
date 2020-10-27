@@ -2,22 +2,21 @@ package com.thoughtworks.capability.gtb.entrancequiz.service;
 
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class StudentService {
-    private final Students studentsPo;
+    private final Students studentsVo;
     int GROUP_SIZE = 6;
     public StudentService() {
-        studentsPo = new Students();
+        studentsVo = new Students();
     }
 
     public List<List<Map<String, String>>> getGroups() {
-        int studentSize = studentsPo.getStudents().size();
-        List<Map<String, String>> students = studentsPo.getStudents();
+        int studentSize = studentsVo.getStudents().size();
+        List<Map<String, String>> students = studentsVo.getStudents();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
         return randomGrouping(studentSize, students, randomNumber);
     }
@@ -56,10 +55,14 @@ public class StudentService {
 
     public List<Map<String, String>> addStudent(Student student) {
         Map<String, String> parseStudent = new HashMap<>();
-        int studentsSize = studentsPo.getStudents().size();
+        int studentsSize = studentsVo.getStudents().size();
         parseStudent.put("id", String.valueOf(studentsSize + 1));
         parseStudent.put("name", student.getName());
-        studentsPo.addStudent(parseStudent);
-        return studentsPo.getStudents();
+        studentsVo.addStudent(parseStudent);
+        return studentsVo.getStudents();
+    }
+
+    public List<Map<String, String>> getAllStudents() {
+        return studentsVo.getStudents();
     }
 }
