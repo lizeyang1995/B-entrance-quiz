@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.entrancequiz.domain;
 
+//TODO GTB-知识点: * 了解下Lombok
 public class Student {
     private String name;
 
