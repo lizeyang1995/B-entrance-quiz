@@ -33,7 +33,7 @@ public class StudentController {
     //TODO GTB-完成度: - StudentController.java:31 缺少查看分组的api
     @GetMapping("/groups")
     public ResponseEntity getRandomGroups() {
-        List<List<Map<String, String>>> groups = studentService.getGroups();
+        List<List<Student>> groups = studentService.getGroups();
         return ResponseEntity.ok(groups);
     }
 

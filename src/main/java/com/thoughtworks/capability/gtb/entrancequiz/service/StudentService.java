@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
+import ch.qos.logback.classic.spi.STEUtil;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import org.springframework.stereotype.Service;
@@ -31,20 +32,21 @@ public class StudentService {
         studentsVo = new Students();
     }
 
-    public List<List<Map<String, String>>> getGroups() {
-        int studentSize = studentsVo.getStudents().size();
-        List<Map<String, String>> students = studentsVo.getStudents();
+    public List<List<Student>> getGroups() {
+//        int studentSize = studentsVo.getStudents().size();
+        int studentSize = students.size();
+//        List<Map<String, String>> students = studentsVo.getStudents();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
         return randomGrouping(studentSize, students, randomNumber);
     }
 
-    private List<List<Map<String, String>>> randomGrouping(int studentSize, List<Map<String, String>> students, List<Integer> randomNumber) {
+    private List<List<Student>> randomGrouping(int studentSize, List<Student> students, List<Integer> randomNumber) {
         int commonSize = studentSize / GROUP_SIZE;
         int restCount = studentSize % GROUP_SIZE;
-        List<List<Map<String, String>>> result = new ArrayList<>();
+        List<List<Student>> result = new ArrayList<>();
         int count = 0;
         for (int i = 0; i < GROUP_SIZE; i++) {
-            List<Map<String, String>> group = new ArrayList<>();
+            List<Student> group = new ArrayList<>();
             for (int j = 0; j < commonSize; j++) {
                 group.add(students.get(randomNumber.get(count)));
                 count++;
