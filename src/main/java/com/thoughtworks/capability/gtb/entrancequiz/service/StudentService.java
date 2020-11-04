@@ -9,7 +9,7 @@ import java.util.*;
 @Service
 public class StudentService {
     //TODO GTB-综合: - 由于将数据初始化放到了Students中，导致这里的调用很奇怪。可以思考下，如果职责单一一些，是否会更好一些。
-    int GROUP_SIZE = 6;
+    private int GROUP_SIZE = 6;
     private List<Student> students= new ArrayList<>();
     public StudentService() {
         students.add(Student.builder().id(1).name("成吉思汗").build());
@@ -59,7 +59,7 @@ public class StudentService {
         List<Integer> numbers = new ArrayList<>();
         Random random = new Random();
         while(numbers.size() != studentSize){
-            int number = random.nextInt(end-start) + start;
+            int number = random.nextInt(end - start) + start;
             if(!numbers.contains(number)){
                 numbers.add(number);
             }
