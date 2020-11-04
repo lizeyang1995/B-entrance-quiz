@@ -72,13 +72,14 @@ public class StudentService {
         return numbers;
     }
 
-    public List<Map<String, String>> addStudent(Student student) {
-        Map<String, String> parseStudent = new HashMap<>();
-        int studentsSize = studentsVo.getStudents().size();
-        parseStudent.put("id", String.valueOf(studentsSize + 1));
-        parseStudent.put("name", student.getName());
-        studentsVo.addStudent(parseStudent);
-        return studentsVo.getStudents();
+    public List<Student> addStudent(Student student) {
+//        Map<String, String> parseStudent = new HashMap<>();
+//        int studentsSize = studentsVo.getStudents().size();
+//        parseStudent.put("id", String.valueOf(studentsSize + 1));
+//        parseStudent.put("name", student.getName());
+//        studentsVo.addStudent(parseStudent);
+        students.add(Student.builder().id(students.size() + 1).name(student.getName()).build());
+        return students;
     }
 
     public List<Map<String, String>> getAllStudents() {

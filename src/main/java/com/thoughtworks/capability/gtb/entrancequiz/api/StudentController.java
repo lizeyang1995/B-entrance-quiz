@@ -43,7 +43,7 @@ public class StudentController {
     //TODO GTB-知识点: - StudentController.java:40 了解下@ResponseStatus
     @PostMapping("student")
     public ResponseEntity addStudent(@RequestBody Student student) {
-        List<Map<String, String>> allStudents = studentService.addStudent(student);
+        List<Student> allStudents = studentService.addStudent(student);
         return ResponseEntity.ok(allStudents);
     }
 }
