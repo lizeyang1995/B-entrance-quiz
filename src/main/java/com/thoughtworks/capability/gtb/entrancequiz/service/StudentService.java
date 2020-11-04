@@ -1,6 +1,5 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
-import ch.qos.logback.classic.spi.STEUtil;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,6 @@ import java.util.*;
 @Service
 public class StudentService {
     //TODO GTB-综合: - 由于将数据初始化放到了Students中，导致这里的调用很奇怪。可以思考下，如果职责单一一些，是否会更好一些。
-    private final Students studentsVo;
     int GROUP_SIZE = 6;
     private List<Student> students= new ArrayList<>();
     public StudentService() {
@@ -29,13 +27,10 @@ public class StudentService {
         students.add(Student.builder().id(13).name("哪吒").build());
         students.add(Student.builder().id(14).name("大乔").build());
         students.add(Student.builder().id(15).name("蔡文姬").build());
-        studentsVo = new Students();
     }
 
     public List<List<Student>> getGroups() {
-//        int studentSize = studentsVo.getStudents().size();
         int studentSize = students.size();
-//        List<Map<String, String>> students = studentsVo.getStudents();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
         return randomGrouping(studentSize, students, randomNumber);
     }
@@ -73,16 +68,11 @@ public class StudentService {
     }
 
     public List<Student> addStudent(Student student) {
-//        Map<String, String> parseStudent = new HashMap<>();
-//        int studentsSize = studentsVo.getStudents().size();
-//        parseStudent.put("id", String.valueOf(studentsSize + 1));
-//        parseStudent.put("name", student.getName());
-//        studentsVo.addStudent(parseStudent);
         students.add(Student.builder().id(students.size() + 1).name(student.getName()).build());
         return students;
     }
 
-    public List<Map<String, String>> getAllStudents() {
-        return studentsVo.getStudents();
+    public List<Student> getAllStudents() {
+        return students;
     }
 }
