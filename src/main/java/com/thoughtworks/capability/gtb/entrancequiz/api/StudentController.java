@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.entrancequiz.api;
 
+import com.thoughtworks.capability.gtb.entrancequiz.domain.Group;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import com.thoughtworks.capability.gtb.entrancequiz.service.StudentService;
@@ -33,7 +34,7 @@ public class StudentController {
     //TODO GTB-完成度: - StudentController.java:31 缺少查看分组的api
     @GetMapping("/groups")
     public ResponseEntity getRandomGroups() {
-        List<List<Student>> groups = studentService.getGroups();
+        List<Group> groups = studentService.getGroups();
         return ResponseEntity.ok(groups);
     }
 
