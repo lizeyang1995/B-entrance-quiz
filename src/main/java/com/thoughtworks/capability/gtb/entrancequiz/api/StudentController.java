@@ -14,9 +14,12 @@ import java.util.Map;
 @RestController
 @CrossOrigin
 public class StudentController {
-    //TODO GTB-知识点: - StudentController.java:17 推荐构造器注入
-    @Autowired
+    private final
     StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @GetMapping("/students")
     //TODO GTB-工程实践: - StudentController.java:21 方法名应该驼峰形式
