@@ -11,7 +11,23 @@ public class StudentService {
     //TODO GTB-综合: - 由于将数据初始化放到了Students中，导致这里的调用很奇怪。可以思考下，如果职责单一一些，是否会更好一些。
     private final Students studentsVo;
     int GROUP_SIZE = 6;
+    private List<Student> students= new ArrayList<>();
     public StudentService() {
+        students.add(Student.builder().id(1).name("成吉思汗").build());
+        students.add(Student.builder().id(2).name("鲁班七号").build());
+        students.add(Student.builder().id(3).name("太乙真人").build());
+        students.add(Student.builder().id(4).name("钟无艳").build());
+        students.add(Student.builder().id(5).name("花木兰").build());
+        students.add(Student.builder().id(6).name("雅典娜").build());
+        students.add(Student.builder().id(7).name("芈月").build());
+        students.add(Student.builder().id(8).name("白起").build());
+        students.add(Student.builder().id(9).name("刘禅").build());
+        students.add(Student.builder().id(10).name("庄周").build());
+        students.add(Student.builder().id(11).name("马超").build());
+        students.add(Student.builder().id(12).name("刘备").build());
+        students.add(Student.builder().id(13).name("哪吒").build());
+        students.add(Student.builder().id(14).name("大乔").build());
+        students.add(Student.builder().id(15).name("蔡文姬").build());
         studentsVo = new Students();
     }
 
