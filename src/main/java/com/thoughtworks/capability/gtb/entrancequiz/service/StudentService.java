@@ -1,8 +1,8 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Group;
+import com.thoughtworks.capability.gtb.entrancequiz.domain.Groups;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
-import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,7 +12,9 @@ public class StudentService {
     //TODO GTB-综合: - 由于将数据初始化放到了Students中，导致这里的调用很奇怪。可以思考下，如果职责单一一些，是否会更好一些。
     private int GROUP_SIZE = 6;
     private List<Student> students= new ArrayList<>();
+    private Groups groupsHistory;
     public StudentService() {
+        this.groupsHistory = new Groups();
         students.add(Student.builder().id(1).name("成吉思汗").build());
         students.add(Student.builder().id(2).name("鲁班七号").build());
         students.add(Student.builder().id(3).name("太乙真人").build());
@@ -33,7 +35,9 @@ public class StudentService {
     public List<Group> getGroups() {
         int studentSize = students.size();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
-        return randomGrouping(studentSize, students, randomNumber);
+        List<Group> groups = randomGrouping(studentSize, students, randomNumber);
+        groupsHistory.getGroupHistory().add(groups);
+        return groups;
     }
 
     private List<Group> randomGrouping(int studentSize, List<Student> students, List<Integer> randomNumber) {
