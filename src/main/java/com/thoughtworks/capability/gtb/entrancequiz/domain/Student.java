@@ -1,21 +1,15 @@
 package com.thoughtworks.capability.gtb.entrancequiz.domain;
 
-//TODO GTB-知识点: * 了解下Lombok
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
+    private int id;
     private String name;
-
-    public Student(String name) {
-        this.name = name;
-    }
-
-    public Student() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
