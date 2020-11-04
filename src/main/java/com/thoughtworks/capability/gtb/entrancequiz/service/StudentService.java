@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
+import com.thoughtworks.capability.gtb.entrancequiz.domain.Group;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import org.springframework.stereotype.Service;
@@ -29,27 +30,27 @@ public class StudentService {
         students.add(Student.builder().id(15).name("蔡文姬").build());
     }
 
-    public List<List<Student>> getGroups() {
+    public List<Group> getGroups() {
         int studentSize = students.size();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
         return randomGrouping(studentSize, students, randomNumber);
     }
 
-    private List<List<Student>> randomGrouping(int studentSize, List<Student> students, List<Integer> randomNumber) {
+    private List<Group> randomGrouping(int studentSize, List<Student> students, List<Integer> randomNumber) {
         int commonSize = studentSize / GROUP_SIZE;
         int restCount = studentSize % GROUP_SIZE;
-        List<List<Student>> result = new ArrayList<>();
+        List<Group> result = new ArrayList<>();
         int count = 0;
         for (int i = 0; i < GROUP_SIZE; i++) {
-            List<Student> group = new ArrayList<>();
+            Group group = new Group();
             for (int j = 0; j < commonSize; j++) {
-                group.add(students.get(randomNumber.get(count)));
+                group.getGroup().add(students.get(randomNumber.get(count)));
                 count++;
             }
             result.add(group);
         }
         for (int i = 0; i < restCount; i++) {
-            result.get(i).add(students.get(randomNumber.get(count)));
+            result.get(i).getGroup().add(students.get(randomNumber.get(count)));
             count++;
         }
         return result;
