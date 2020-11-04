@@ -4,6 +4,7 @@ import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Students;
 import com.thoughtworks.capability.gtb.entrancequiz.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +23,9 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    //TODO GTB-工程实践: - StudentController.java:21 方法名应该驼峰形式
-    //TODO GTB-知识点: - StudentController.java:23 如果不是有自定义返回的需求，ResponseEntity一般可省略
-    public ResponseEntity getAllstudents() {
-        List<Map<String, String>> allStudents = studentService.getAllStudents();
-        return ResponseEntity.ok(allStudents);
+    @ResponseStatus(HttpStatus.OK)
+    public List<Map<String, String>> getAllStudents() {
+        return studentService.getAllStudents();
     }
 
     //TODO GTB-工程实践: - StudentController.java:28 对group资源的操作，应该放在单独的controller中进行
