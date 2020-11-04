@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//TODO GTB-综合: - Students.java:7 这个类看起来做了group事情，但是确叫students，不是很表意
 public class Students {
     private List<Map<String, String>> students = new ArrayList<>();
 
@@ -24,6 +24,7 @@ public class Students {
         this.students = students;
     }
 
+    //TODO GTB-知识点: - Students.java:27 数据相关的操作，不应该是domain的职责
     public void initStudent() {
         this.students.add(new HashMap<String, String>(){{put("id", "1");put("name", "成吉思汗");}});
         this.students.add(new HashMap<String, String>(){{put("id", "2");put("name", "鲁班七号");}});
