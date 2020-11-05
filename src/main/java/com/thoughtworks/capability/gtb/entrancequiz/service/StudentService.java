@@ -9,7 +9,6 @@ import java.util.*;
 
 @Service
 public class StudentService {
-    //TODO GTB-综合: - 由于将数据初始化放到了Students中，导致这里的调用很奇怪。可以思考下，如果职责单一一些，是否会更好一些。
     private int GROUP_SIZE = 6;
     private List<Student> students= new ArrayList<>();
     private Groups groupsHistory;
