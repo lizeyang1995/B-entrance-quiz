@@ -33,15 +33,15 @@ public class StudentController {
     //TODO GTB-完成度: - StudentController.java:37 返回的数据结构中缺少组名，或者是放在前端做的？
     //TODO GTB-完成度: - StudentController.java:31 缺少查看分组的api
     @PostMapping("/groups")
-    public ResponseEntity getRandomGroups() {
-        List<Group> groups = studentService.getGroups();
-        return ResponseEntity.ok(groups);
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Group> getRandomGroups() {
+        return studentService.getGroups();
     }
 
     @GetMapping("/groups")
-    public ResponseEntity getHistoryGroups() {
-        List<Group> groups = studentService.showGroups();
-        return ResponseEntity.ok(groups);
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Group> getHistoryGroups() {
+        return studentService.showGroups();
     }
 
     //TODO GTB-知识点: - StudentController.java:34 资源名应该是复数形式
@@ -49,8 +49,8 @@ public class StudentController {
     //TODO GTB-知识点: - StudentController.java:39 POST的返回结果，应该是成功创建的对象或是id
     //TODO GTB-知识点: - StudentController.java:40 了解下@ResponseStatus
     @PostMapping("student")
-    public ResponseEntity addStudent(@RequestBody Student student) {
-        List<Student> allStudents = studentService.addStudent(student);
-        return ResponseEntity.ok(allStudents);
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Student> addStudent(@RequestBody Student student) {
+        return studentService.addStudent(student);
     }
 }
