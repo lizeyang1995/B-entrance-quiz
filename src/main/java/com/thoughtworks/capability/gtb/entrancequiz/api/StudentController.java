@@ -32,9 +32,15 @@ public class StudentController {
     //TODO GTB-工程实践: - StudentController.java:28 对group资源的操作，应该放在单独的controller中进行
     //TODO GTB-完成度: - StudentController.java:37 返回的数据结构中缺少组名，或者是放在前端做的？
     //TODO GTB-完成度: - StudentController.java:31 缺少查看分组的api
-    @GetMapping("/groups")
+    @PostMapping("/groups")
     public ResponseEntity getRandomGroups() {
         List<Group> groups = studentService.getGroups();
+        return ResponseEntity.ok(groups);
+    }
+
+    @GetMapping("/groups")
+    public ResponseEntity getHistoryGroups() {
+        List<Group> groups = studentService.showGroups();
         return ResponseEntity.ok(groups);
     }
 

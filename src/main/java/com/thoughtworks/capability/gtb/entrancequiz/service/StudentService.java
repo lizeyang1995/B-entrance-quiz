@@ -80,4 +80,9 @@ public class StudentService {
     public List<Student> getAllStudents() {
         return students;
     }
+
+    public List<Group> showGroups() {
+        int size = groupsHistory.getGroupHistory().size();
+        return groupsHistory.getGroupHistory().get(size - 1);
+    }
 }
