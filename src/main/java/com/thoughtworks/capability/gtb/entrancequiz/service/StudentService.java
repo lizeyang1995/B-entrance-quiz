@@ -1,7 +1,7 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Group;
-import com.thoughtworks.capability.gtb.entrancequiz.domain.Groups;
+import com.thoughtworks.capability.gtb.entrancequiz.repository.GroupsRepository;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import com.thoughtworks.capability.gtb.entrancequiz.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,9 @@ import java.util.*;
 
 @Service
 public class StudentService {
-    private int GROUP_SIZE = 6;
+    private int GROUP_SIZE = GroupsRepository.GROUP_SIZE;
     private List<Student> students= StudentRepository.students;
-    private Groups groupsHistory;
     public StudentService() {
-        this.groupsHistory = new Groups();
         students.add(Student.builder().id(1).name("成吉思汗").build());
         students.add(Student.builder().id(2).name("鲁班七号").build());
         students.add(Student.builder().id(3).name("太乙真人").build());
@@ -36,7 +34,7 @@ public class StudentService {
         int studentSize = students.size();
         List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
         List<Group> groups = randomGrouping(studentSize, students, randomNumber);
-        groupsHistory.getGroupHistory().add(groups);
+        GroupsRepository.groupsHistory.add(groups);
         return groups;
     }
 
@@ -82,7 +80,7 @@ public class StudentService {
     }
 
     public List<Group> showGroups() {
-        int size = groupsHistory.getGroupHistory().size();
-        return groupsHistory.getGroupHistory().get(size - 1);
+        int size = GroupsRepository.groupsHistory.size();
+        return GroupsRepository.groupsHistory.get(size - 1);
     }
 }
