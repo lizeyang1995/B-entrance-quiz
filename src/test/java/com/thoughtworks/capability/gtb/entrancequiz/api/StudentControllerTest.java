@@ -44,7 +44,7 @@ public class StudentControllerTest {
         student.setName("西施");
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = objectMapper.writeValueAsString(student);
-        mockMvc.perform(post("/student").content(jsonString).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(post("/students").content(jsonString).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 }

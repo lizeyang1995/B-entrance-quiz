@@ -40,7 +40,7 @@ public class StudentController {
         return studentService.showGroups();
     }
 
-    @PostMapping("student")
+    @PostMapping("students")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Student> addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
