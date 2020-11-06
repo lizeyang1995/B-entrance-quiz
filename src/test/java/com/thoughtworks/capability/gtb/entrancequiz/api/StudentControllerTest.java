@@ -34,8 +34,8 @@ public class StudentControllerTest {
 
     @Test
     void should_grouping_students() throws Exception {
-        mockMvc.perform(get("/groups"))
-                .andExpect(status().isOk());
+        mockMvc.perform(post("/groups"))
+                .andExpect(status().isCreated());
     }
 
     @Test
@@ -46,5 +46,11 @@ public class StudentControllerTest {
         String jsonString = objectMapper.writeValueAsString(student);
         mockMvc.perform(post("/students").content(jsonString).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void should_get_history_groups() throws Exception {
+        mockMvc.perform(get("/groups"))
+                .andExpect(status().isOk());
     }
 }
