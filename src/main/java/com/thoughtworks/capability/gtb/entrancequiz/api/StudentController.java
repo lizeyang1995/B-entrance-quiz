@@ -35,7 +35,7 @@ public class StudentController {
     }
 
     @GetMapping("/groups")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public List<Group> getHistoryGroups() {
         return studentService.showGroups();
     }
