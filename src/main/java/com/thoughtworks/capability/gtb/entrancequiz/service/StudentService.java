@@ -3,6 +3,7 @@ package com.thoughtworks.capability.gtb.entrancequiz.service;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Group;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Groups;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
+import com.thoughtworks.capability.gtb.entrancequiz.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,7 +11,7 @@ import java.util.*;
 @Service
 public class StudentService {
     private int GROUP_SIZE = 6;
-    private List<Student> students= new ArrayList<>();
+    private List<Student> students= StudentRepository.students;
     private Groups groupsHistory;
     public StudentService() {
         this.groupsHistory = new Groups();
