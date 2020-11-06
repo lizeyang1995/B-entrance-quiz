@@ -10,7 +10,7 @@ import java.util.*;
 
 @Service
 public class StudentService {
-    private int GROUP_SIZE = GroupsRepository.GROUP_SIZE;
+//    private int GROUP_SIZE = GroupsRepository.GROUP_SIZE;
     private List<Student> students= StudentRepository.students;
     public StudentService() {
         students.add(Student.builder().id(1).name("成吉思汗").build());
@@ -30,45 +30,45 @@ public class StudentService {
         students.add(Student.builder().id(15).name("蔡文姬").build());
     }
 
-    public List<Group> getGroups() {
-        int studentSize = students.size();
-        List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
-        List<Group> groups = randomGrouping(studentSize, students, randomNumber);
-        GroupsRepository.groupsHistory.add(groups);
-        return groups;
-    }
-
-    private List<Group> randomGrouping(int studentSize, List<Student> students, List<Integer> randomNumber) {
-        int commonSize = studentSize / GROUP_SIZE;
-        int restCount = studentSize % GROUP_SIZE;
-        List<Group> result = new ArrayList<>();
-        int count = 0;
-        for (int i = 0; i < GROUP_SIZE; i++) {
-            Group group = new Group();
-            for (int j = 0; j < commonSize; j++) {
-                group.getGroup().add(students.get(randomNumber.get(count)));
-                count++;
-            }
-            result.add(group);
-        }
-        for (int i = 0; i < restCount; i++) {
-            result.get(i).getGroup().add(students.get(randomNumber.get(count)));
-            count++;
-        }
-        return result;
-    }
-
-    private List<Integer> getRandomNumber(int studentSize, int start, int end) {
-        List<Integer> numbers = new ArrayList<>();
-        Random random = new Random();
-        while(numbers.size() != studentSize){
-            int number = random.nextInt(end - start) + start;
-            if(!numbers.contains(number)){
-                numbers.add(number);
-            }
-        }
-        return numbers;
-    }
+//    public List<Group> getGroups() {
+//        int studentSize = students.size();
+//        List<Integer> randomNumber = getRandomNumber(studentSize, 0, studentSize);
+//        List<Group> groups = randomGrouping(studentSize, students, randomNumber);
+//        GroupsRepository.groupsHistory.add(groups);
+//        return groups;
+//    }
+//
+//    private List<Group> randomGrouping(int studentSize, List<Student> students, List<Integer> randomNumber) {
+//        int commonSize = studentSize / GROUP_SIZE;
+//        int restCount = studentSize % GROUP_SIZE;
+//        List<Group> result = new ArrayList<>();
+//        int count = 0;
+//        for (int i = 0; i < GROUP_SIZE; i++) {
+//            Group group = new Group();
+//            for (int j = 0; j < commonSize; j++) {
+//                group.getGroup().add(students.get(randomNumber.get(count)));
+//                count++;
+//            }
+//            result.add(group);
+//        }
+//        for (int i = 0; i < restCount; i++) {
+//            result.get(i).getGroup().add(students.get(randomNumber.get(count)));
+//            count++;
+//        }
+//        return result;
+//    }
+//
+//    private List<Integer> getRandomNumber(int studentSize, int start, int end) {
+//        List<Integer> numbers = new ArrayList<>();
+//        Random random = new Random();
+//        while(numbers.size() != studentSize){
+//            int number = random.nextInt(end - start) + start;
+//            if(!numbers.contains(number)){
+//                numbers.add(number);
+//            }
+//        }
+//        return numbers;
+//    }
 
     public List<Student> addStudent(Student student) {
         students.add(Student.builder().id(students.size() + 1).name(student.getName()).build());
@@ -79,8 +79,8 @@ public class StudentService {
         return students;
     }
 
-    public List<Group> showGroups() {
-        int size = GroupsRepository.groupsHistory.size();
-        return GroupsRepository.groupsHistory.get(size - 1);
-    }
+//    public List<Group> showGroups() {
+//        int size = GroupsRepository.groupsHistory.size();
+//        return GroupsRepository.groupsHistory.get(size - 1);
+//    }
 }

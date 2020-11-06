@@ -28,17 +28,6 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
-    @PostMapping("/groups")
-    @ResponseStatus(HttpStatus.CREATED)
-    public List<Group> getRandomGroups() {
-        return studentService.getGroups();
-    }
-
-    @GetMapping("/groups")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Group> getHistoryGroups() {
-        return studentService.showGroups();
-    }
 
     @PostMapping("students")
     @ResponseStatus(HttpStatus.CREATED)
