@@ -58,7 +58,7 @@ public class GroupService {
     public List<Group> showGroups() {
         int size = GroupsRepository.groupsHistory.size();
         if (size == 0) {
-            return null;
+            return new ArrayList<>();
         }
         return GroupsRepository.groupsHistory.get(size - 1);
     }
